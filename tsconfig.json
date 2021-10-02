@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "types": ["mocha", "chai"],
+    "sourceMap": true,
+    "lib": ["es2015"]
+  },
+  "exclude": ["node_modules"]
+}

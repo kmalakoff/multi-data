@@ -1,0 +1,1 @@
+ignores: ["multi-data", "ts-node", "karma-*", "webpack", "ts-loader", "typedoc", "typedoc-plugin-rename-defaults"]
