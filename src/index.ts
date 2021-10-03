@@ -11,7 +11,7 @@ export interface Options {
  */
 export default class MultiData {
   readonly boundary: string;
-  protected lines: string[];
+  protected lines: string[] = [];
 
   /**
    * @param boundary The string used to define multipart boundaries and the end of body.
@@ -19,7 +19,6 @@ export default class MultiData {
   constructor(boundary: string) {
     if (boundary === undefined) throw new TypeError("boundary expected");
     this.boundary = boundary;
-    this.lines = [];
   }
 
   /**
