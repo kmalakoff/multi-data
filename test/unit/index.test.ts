@@ -1,7 +1,7 @@
 import { assert } from "chai";
 import MultiData from "multi-data";
 
-describe("multi-data", function () {
+describe("form-data", function () {
   describe("constructor", function () {
     it("Error: constructor expects a boundary", function () {
       assert.throws(() => new MultiData(undefined));
@@ -41,13 +41,9 @@ describe("multi-data", function () {
       form.append("section1", "some data");
       assert.equal(
         form.toString(),
-        [
-          `--${boundary}`,
-          'Content-Disposition: form-data; name="section1"',
-          "",
-          "some data",
-          `--${boundary}--`,
-        ].join("\r\n")
+        [`--${boundary}`, 'Content-Disposition: form-data; name="section1"', "", "some data", `--${boundary}--`].join(
+          "\r\n"
+        )
       );
     });
 
