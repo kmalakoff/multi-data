@@ -1,7 +1,13 @@
-/* eslint-disable mocha/no-setup-in-describe,@typescript-eslint/no-var-requires */
-const tests = require("./shared/tests.cjs");
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { assert } = require("chai");
 const MultiData = require("multi-data");
 
-describe("require.test.cjs", function () {
-  tests(MultiData);
+describe("exports .cjs", function () {
+  it("append with headers", function () {
+    const boundary = "test-boundary";
+    const form = new MultiData(boundary);
+    const options = { headers: { "some-header": "header-value" } };
+    form.append("section1", "some data", options);
+    assert.ok(~form.toString().indexOf("some-header"));
+  });
 });

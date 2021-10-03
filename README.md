@@ -2,7 +2,7 @@
 
 Create multipart form data
 
-### Examples
+### Example 1
 
 ```typescript
 import MultiData from "multi-data";

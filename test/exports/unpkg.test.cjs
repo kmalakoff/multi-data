@@ -1,7 +1,13 @@
-/* eslint-disable mocha/no-setup-in-describe,@typescript-eslint/no-var-requires */
-const tests = require("./shared/tests.cjs");
-const MultiData = require("multi-data/unpkg");
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { assert } = require("chai");
+const MultiData = require("multi-data/dist/umd/index.js");
 
-describe("unpkg.test.cjs", function () {
-  tests(MultiData);
+describe("exports multi-data/dist/umd/index.js", function () {
+  it("append with headers", function () {
+    const boundary = "test-boundary";
+    const form = new MultiData(boundary);
+    const options = { headers: { "some-header": "header-value" } };
+    form.append("section1", "some data", options);
+    assert.ok(~form.toString().indexOf("some-header"));
+  });
 });
