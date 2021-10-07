@@ -1,2 +1,71 @@
-"use strict";function e(e,i,s){return i in e?Object.defineProperty(e,i,{value:s,enumerable:!0,configurable:!0,writable:!0}):e[i]=s,e}module.exports=class{constructor(i){if(e(this,"boundary",void 0),e(this,"lines",[]),void 0===i)throw new TypeError("boundary expected");this.boundary=i}append(e,i,s){if(void 0===e)throw new TypeError("name expected");if(void 0===i)throw new TypeError("data expected");if(this.lines.push(`--${this.boundary}`),this.lines.push(`Content-Disposition: form-data; name="${e}"`),s&&s.headers){const e=s.headers;for(const i in e)this.lines.push(`${i}: ${e[i]}`)}return this.lines.push(""),this.lines.push(i),this}toString(){this.lines.push(`--${this.boundary}--`);const e=this.lines.join("\r\n");return this.lines.pop(),e}};
+'use strict';
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+/**
+ * Class to build and concatenate multipart form data
+ */
+class MultiData {
+  /**
+   * @param boundary The string used to define multipart boundaries and the end of body.
+   */
+  constructor(boundary) {
+    _defineProperty(this, "lines", []);
+
+    if (boundary === undefined) throw new TypeError("boundary expected");
+    this.boundary = boundary;
+  }
+  /**
+   * Append a part to the multipart form data.
+   *
+   * @param name The part name.
+   * @param data The part data.
+   * @param options Pass headers in the options for custom part headers.
+   */
+
+
+  append(name, data, options) {
+    if (name === undefined) throw new TypeError("name expected");
+    if (data === undefined) throw new TypeError("data expected");
+    this.lines.push(`--${this.boundary}`);
+    this.lines.push(`Content-Disposition: form-data; name="${name}"`);
+
+    if (options && options.headers) {
+      const headers = options.headers;
+
+      for (const key in headers) this.lines.push(`${key}: ${headers[key]}`);
+    }
+
+    this.lines.push("");
+    this.lines.push(data);
+    return this;
+  }
+  /**
+   * After appending data, use toString() to concatenate the form data for your request.
+   */
+
+
+  toString() {
+    this.lines.push(`--${this.boundary}--`);
+    const string = this.lines.join("\r\n");
+    this.lines.pop();
+    return string;
+  }
+
+}
+
+module.exports = MultiData;
 //# sourceMappingURL=index.js.map

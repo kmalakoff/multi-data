@@ -1,2 +1,54 @@
-class s{lines=[];constructor(s){if(void 0===s)throw new TypeError("boundary expected");this.boundary=s}append(s,e,i){if(void 0===s)throw new TypeError("name expected");if(void 0===e)throw new TypeError("data expected");if(this.lines.push(`--${this.boundary}`),this.lines.push(`Content-Disposition: form-data; name="${s}"`),i&&i.headers){const s=i.headers;for(const e in s)this.lines.push(`${e}: ${s[e]}`)}return this.lines.push(""),this.lines.push(e),this}toString(){this.lines.push(`--${this.boundary}--`);const s=this.lines.join("\r\n");return this.lines.pop(),s}}export{s as default};
+/**
+ * Class to build and concatenate multipart form data
+ */
+class MultiData {
+  lines = [];
+  /**
+   * @param boundary The string used to define multipart boundaries and the end of body.
+   */
+
+  constructor(boundary) {
+    if (boundary === undefined) throw new TypeError("boundary expected");
+    this.boundary = boundary;
+  }
+  /**
+   * Append a part to the multipart form data.
+   *
+   * @param name The part name.
+   * @param data The part data.
+   * @param options Pass headers in the options for custom part headers.
+   */
+
+
+  append(name, data, options) {
+    if (name === undefined) throw new TypeError("name expected");
+    if (data === undefined) throw new TypeError("data expected");
+    this.lines.push(`--${this.boundary}`);
+    this.lines.push(`Content-Disposition: form-data; name="${name}"`);
+
+    if (options && options.headers) {
+      const headers = options.headers;
+
+      for (const key in headers) this.lines.push(`${key}: ${headers[key]}`);
+    }
+
+    this.lines.push("");
+    this.lines.push(data);
+    return this;
+  }
+  /**
+   * After appending data, use toString() to concatenate the form data for your request.
+   */
+
+
+  toString() {
+    this.lines.push(`--${this.boundary}--`);
+    const string = this.lines.join("\r\n");
+    this.lines.pop();
+    return string;
+  }
+
+}
+
+export { MultiData as default };
 //# sourceMappingURL=index.js.map
