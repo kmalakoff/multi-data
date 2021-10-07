@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { assert } = require("chai");
-const MultiData = require("multi-data/dist/umd/multi-data.js");
+const MultiData = require("multi-data/dist/umd/multi-data.min.js");
 
-describe("exports multi-data/dist/umd/multi-data.js", function () {
+describe("exports multi-data/dist/umd/multi-data.min.js", function () {
   it("append with headers", function () {
     const boundary = "test-boundary";
     const form = new MultiData(boundary);
