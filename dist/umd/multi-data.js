@@ -51,6 +51,8 @@
     function MultiData(boundary) {
       _classCallCheck(this, MultiData);
 
+      _defineProperty(this, "boundary", void 0);
+
       _defineProperty(this, "lines", []);
 
       if (boundary === undefined) throw new TypeError("boundary expected");

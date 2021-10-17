@@ -1,13 +1,17 @@
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /**
  * Class to build and concatenate multipart form data
  */
-class MultiData {
-  lines = [];
+export default class MultiData {
   /**
    * @param boundary The string used to define multipart boundaries and the end of body.
    */
-
   constructor(boundary) {
+    _defineProperty(this, "boundary", void 0);
+
+    _defineProperty(this, "lines", []);
+
     if (boundary === undefined) throw new TypeError("boundary expected");
     this.boundary = boundary;
   }
@@ -49,6 +53,4 @@ class MultiData {
   }
 
 }
-
-export { MultiData as default };
 //# sourceMappingURL=index.js.map
