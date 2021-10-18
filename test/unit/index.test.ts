@@ -1,5 +1,6 @@
 import { assert } from "chai";
 import MultiData from "multi-data";
+import encodeUTF8 from "../lib/encodeUTF8.cjs";
 
 describe("form-data", function () {
   describe("constructor", function () {
@@ -44,6 +45,22 @@ describe("form-data", function () {
         [`--${boundary}`, 'Content-Disposition: form-data; name="section1"', "", "some data", `--${boundary}--`].join(
           "\r\n"
         )
+      );
+    });
+
+    it("append binary", function () {
+      const boundary = "test-boundary";
+      const form = new MultiData(boundary);
+      form.append("section1", encodeUTF8("some data"));
+      assert.equal(
+        form.toString(),
+        [
+          `--${boundary}`,
+          'Content-Disposition: form-data; name="section1"',
+          "",
+          encodeUTF8("some data").toString(),
+          `--${boundary}--`,
+        ].join("\r\n")
       );
     });
 
