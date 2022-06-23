@@ -1,4 +1,4 @@
 {
   "extends": "./node_modules/ts-dev-stack/.depcheckrc.json",
-  "ignores": ["multi-data", "@types/*", "@typescript-eslint/*", "eslint-*", "chai"]
+  "ignores": ["multi-data", "@types/*", "@typescript-eslint/*", "eslint-*"]
 }

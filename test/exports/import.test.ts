@@ -1,4 +1,4 @@
-import { assert } from "chai";
+import assert from "assert";
 import MultiData, { Options } from "multi-data";
 
 describe("exports .ts", function () {
