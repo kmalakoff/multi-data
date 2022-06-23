@@ -53,4 +53,4 @@ export default class MultiData {
   }
 
 }
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.mjs.map
