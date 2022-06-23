@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { assert } = require("chai");
+const assert = require("assert");
 const MultiData = require("multi-data/dist/umd/multi-data.js");
 
 describe("exports multi-data/dist/umd/multi-data.js", function () {

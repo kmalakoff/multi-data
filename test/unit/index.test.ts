@@ -1,4 +1,4 @@
-import { assert } from "chai";
+import assert from "assert";
 import MultiData from "multi-data";
 import encodeUTF8 from "../lib/encodeUTF8.cjs";
 
