@@ -40,7 +40,7 @@
     "typescript"
   ],
   "devDependencies": {
-    "ts-dev-stack": "^0.2.1"
+    "ts-dev-stack": "^0.3.2"
   },
   "type": "module",
   "engines": {
@@ -50,10 +50,11 @@
     ".": {
       "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.js",
-      "types": "./dist/esm/index.d.ts"
+      "types": "./dist/types/index.d.ts"
     },
     "./*": "./*"
   },
-  "types": "dist/esm/index.d.ts",
+  "source": "src/index.ts",
+  "types": "dist/types/index.d.ts",
   "unpkg": "dist/umd/multi-data.js"
 }

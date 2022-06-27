@@ -17,7 +17,7 @@ export default class MultiData {
    * @param boundary The string used to define multipart boundaries and the end of body.
    */
   constructor(boundary: string) {
-    if (boundary === undefined) throw new TypeError("boundary expected");
+    if (boundary === undefined) throw new TypeError('boundary expected');
     this.boundary = boundary;
   }
 
@@ -29,8 +29,8 @@ export default class MultiData {
    * @param options Pass headers in the options for custom part headers.
    */
   append(name: string, data: string, options?: Options): MultiData {
-    if (name === undefined) throw new TypeError("name expected");
-    if (data === undefined) throw new TypeError("data expected");
+    if (name === undefined) throw new TypeError('name expected');
+    if (data === undefined) throw new TypeError('data expected');
 
     this.lines.push(`--${this.boundary}`);
     this.lines.push(`Content-Disposition: form-data; name="${name}"`);
@@ -38,7 +38,7 @@ export default class MultiData {
       const headers = options.headers;
       for (const key in headers) this.lines.push(`${key}: ${headers[key]}`);
     }
-    this.lines.push("");
+    this.lines.push('');
     this.lines.push(data);
     return this;
   }
@@ -48,7 +48,7 @@ export default class MultiData {
    */
   toString(): string {
     this.lines.push(`--${this.boundary}--`);
-    const string = this.lines.join("\r\n");
+    const string = this.lines.join('\r\n');
     this.lines.pop();
     return string;
   }
