@@ -14,7 +14,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsds build:dist",
+    "build": "tsds build",
     "deploy": "tsds deploy",
     "format": "tsds format",
     "lint": "tsds lint",
@@ -40,7 +40,7 @@
     "typescript"
   ],
   "devDependencies": {
-    "ts-dev-stack": "^0.3.3"
+    "ts-dev-stack": "^0.4.1"
   },
   "type": "module",
   "engines": {
@@ -54,7 +54,9 @@
     },
     "./*": "./*"
   },
-  "source": "src/index.ts",
+  "tsds": {
+    "source": "src/index.ts"
+  },
   "types": "dist/types/index.d.ts",
   "unpkg": "dist/umd/multi-data.js"
 }
