@@ -50,3 +50,4 @@
   return MultiData;
 
 }));
+//# sourceMappingURL=multi-data.js.map
