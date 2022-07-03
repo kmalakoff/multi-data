@@ -1,39 +1,46 @@
-class MultiData {
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
+}
+var MultiData = /*#__PURE__*/ function() {
+    "use strict";
+    function MultiData(boundary) {
+        _classCallCheck(this, MultiData);
+        this.lines = [];
+        if (boundary === undefined) throw new TypeError("boundary expected");
+        this.boundary = boundary;
+    }
+    var _proto = MultiData.prototype;
     /**
    * Append a part to the multipart form data.
    *
    * @param name The part name.
    * @param data The part data.
    * @param options Pass headers in the options for custom part headers.
-   */ append(name, data, options) {
-        if (name === undefined) throw new TypeError('name expected');
-        if (data === undefined) throw new TypeError('data expected');
-        this.lines.push(`--${this.boundary}`);
-        this.lines.push(`Content-Disposition: form-data; name="${name}"`);
+   */ _proto.append = function append(name, data, options) {
+        if (name === undefined) throw new TypeError("name expected");
+        if (data === undefined) throw new TypeError("data expected");
+        this.lines.push("--".concat(this.boundary));
+        this.lines.push('Content-Disposition: form-data; name="'.concat(name, '"'));
         if (options && options.headers) {
-            const headers = options.headers;
-            for(const key in headers)this.lines.push(`${key}: ${headers[key]}`);
+            var headers = options.headers;
+            for(var key in headers)this.lines.push("".concat(key, ": ").concat(headers[key]));
         }
-        this.lines.push('');
+        this.lines.push("");
         this.lines.push(data);
         return this;
-    }
+    };
     /**
    * After appending data, use toString() to concatenate the form data for your request.
-   */ toString() {
-        this.lines.push(`--${this.boundary}--`);
-        const string = this.lines.join('\r\n');
+   */ _proto.toString = function toString() {
+        this.lines.push("--".concat(this.boundary, "--"));
+        var string = this.lines.join("\r\n");
         this.lines.pop();
         return string;
-    }
-    /**
-   * @param boundary The string used to define multipart boundaries and the end of body.
-   */ constructor(boundary){
-        this.lines = [];
-        if (boundary === undefined) throw new TypeError('boundary expected');
-        this.boundary = boundary;
-    }
-}
+    };
+    return MultiData;
+}();
 /**
  * Class to build and concatenate multipart form data
  */ export { MultiData as default };
