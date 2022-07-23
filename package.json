@@ -1,34 +1,7 @@
 {
   "name": "multi-data",
-  "description": "Create multipart form data",
   "version": "0.2.8",
-  "author": {
-    "email": "kmalakoff@gmail.com",
-    "name": "Kevin Malakoff",
-    "url": "https://github.com/kmalakoff"
-  },
-  "license": "MIT",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.mjs",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsds build",
-    "deploy": "tsds deploy",
-    "format": "tsds format",
-    "lint": "tsds lint",
-    "test": "tsds test:node && tsds test:browser",
-    "version2": "tsds version"
-  },
-  "homepage": "https://github.com/kmalakoff/multi-data#README.md",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/kmalakoff/multi-data.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kmalakoff/multi-data/issues"
-  },
+  "description": "Create multipart form data",
   "keywords": [
     "batch",
     "data",
@@ -38,13 +11,21 @@
     "parts",
     "typescript"
   ],
-  "devDependencies": {
-    "ts-dev-stack": "^0.6.5"
+  "homepage": "https://github.com/kmalakoff/multi-data#README.md",
+  "bugs": {
+    "url": "https://github.com/kmalakoff/multi-data/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kmalakoff/multi-data.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Kevin Malakoff",
+    "email": "kmalakoff@gmail.com",
+    "url": "https://github.com/kmalakoff"
   },
   "type": "module",
-  "engines": {
-    "node": ">=0.8"
-  },
   "exports": {
     ".": {
       "import": "./dist/esm/index.mjs",
@@ -53,9 +34,29 @@
     },
     "./*": "./*"
   },
+  "main": "dist/cjs/index.js",
+  "unpkg": "dist/umd/multi-data.js",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsds build",
+    "deploy": "tsds deploy",
+    "format": "tsds format",
+    "lint": "tsds lint",
+    "test": "tsds test:node && tsds test:browser",
+    "test:engines": "nvu engines tsds test:node && tsds test:browser",
+    "version": "tsds version"
+  },
+  "devDependencies": {
+    "ts-dev-stack": "^0.6.15"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
   "tsds": {
     "source": "src/index.ts"
-  },
-  "types": "dist/types/index.d.ts",
-  "unpkg": "dist/umd/multi-data.js"
+  }
 }
