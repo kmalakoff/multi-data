@@ -2,7 +2,12 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-module.exports = void 0;
+Object.defineProperty(exports, "default", {
+    enumerable: true,
+    get: function() {
+        return MultiData;
+    }
+});
 function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -46,4 +51,9 @@ var MultiData = /*#__PURE__*/ function() {
     };
     return MultiData;
 }();
-module.exports = MultiData;
+
+if ((typeof exports.default === 'function' || (typeof exports.default === 'object' && exports.default !== null)) && typeof exports.default.__esModule === 'undefined') {
+  Object.defineProperty(exports.default, '__esModule', { value: true });
+  for (var key in exports) exports.default[key] = exports[key];
+  module.exports = exports.default;
+}
