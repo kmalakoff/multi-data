@@ -2,7 +2,12 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-module.exports = void 0;
+Object.defineProperty(exports, "default", {
+    enumerable: true,
+    get: function() {
+        return MultiData;
+    }
+});
 function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -28,7 +33,7 @@ var MultiData = /*#__PURE__*/ function() {
         if (data === undefined) throw new TypeError("data expected");
         this.lines.push("--".concat(this.boundary));
         this.lines.push('Content-Disposition: form-data; name="'.concat(name, '"'));
-        if (options && options.headers) {
+        if (options === null || options === void 0 ? void 0 : options.headers) {
             var headers = options.headers;
             for(var key in headers)this.lines.push("".concat(key, ": ").concat(headers[key]));
         }
@@ -46,4 +51,9 @@ var MultiData = /*#__PURE__*/ function() {
     };
     return MultiData;
 }();
-module.exports = MultiData;
+
+if ((typeof exports.default === 'function' || (typeof exports.default === 'object' && exports.default !== null)) && typeof exports.default.__esModule === 'undefined') {
+  Object.defineProperty(exports.default, '__esModule', { value: true });
+  for (var key in exports) exports.default[key] = exports[key];
+  module.exports = exports.default;
+}

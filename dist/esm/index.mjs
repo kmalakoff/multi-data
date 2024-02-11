@@ -10,7 +10,7 @@ let MultiData = class MultiData {
         if (data === undefined) throw new TypeError('data expected');
         this.lines.push(`--${this.boundary}`);
         this.lines.push(`Content-Disposition: form-data; name="${name}"`);
-        if (options && options.headers) {
+        if (options?.headers) {
             const headers = options.headers;
             for(const key in headers)this.lines.push(`${key}: ${headers[key]}`);
         }
