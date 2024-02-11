@@ -28,7 +28,7 @@
           if (data === undefined) throw new TypeError("data expected");
           this.lines.push("--".concat(this.boundary));
           this.lines.push('Content-Disposition: form-data; name="'.concat(name, '"'));
-          if (options && options.headers) {
+          if (options === null || options === void 0 ? void 0 : options.headers) {
               var headers = options.headers;
               for(var key in headers)this.lines.push("".concat(key, ": ").concat(headers[key]));
           }
