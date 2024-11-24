@@ -1,3 +1,16 @@
+function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
 let MultiData = class MultiData {
     /**
    * Append a part to the multipart form data.
@@ -29,7 +42,8 @@ let MultiData = class MultiData {
     /**
    * @param boundary The string used to define multipart boundaries and the end of body.
    */ constructor(boundary){
-        this.lines = [];
+        _define_property(this, "boundary", void 0);
+        _define_property(this, "lines", []);
         if (boundary === undefined) throw new TypeError('boundary expected');
         this.boundary = boundary;
     }
