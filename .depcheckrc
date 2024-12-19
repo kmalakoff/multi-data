@@ -1,0 +1,1 @@
+ignores: ["multi-data", "depcheck", "ts-dev-stack", "@types/*"]
