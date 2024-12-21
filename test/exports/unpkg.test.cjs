@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const assert = require('assert');
 const MultiData = require('multi-data/dist/umd/multi-data.js');
 
-describe('exports multi-data/dist/umd/multi-data.js', function () {
-  it('append with headers', function () {
+describe('exports multi-data/dist/umd/multi-data.js', () => {
+  it('append with headers', () => {
     const boundary = 'test-boundary';
     const form = new MultiData(boundary);
     const options = { headers: { 'some-header': 'header-value' } };
