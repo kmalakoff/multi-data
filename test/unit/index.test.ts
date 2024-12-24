@@ -1,56 +1,59 @@
 import assert from 'assert';
+// @ts-ignore
 import MultiData from 'multi-data';
-import encodeUTF8 from '../lib/encodeUTF8.cjs';
 
-describe('form-data', function () {
-  describe('constructor', function () {
-    it('Error: constructor expects a boundary', function () {
+// @ts-ignore
+import encodeUTF8 from '../lib/encodeUTF8.ts';
+
+describe('form-data', () => {
+  describe('constructor', () => {
+    it('Error: constructor expects a boundary', () => {
       assert.throws(() => new MultiData(undefined));
     });
 
-    it('boundary', function () {
+    it('boundary', () => {
       const boundary = 'test-boundary';
       const form = new MultiData(boundary);
       assert.equal(form.boundary, boundary);
     });
   });
 
-  describe('toString', function () {
-    it('no append', function () {
+  describe('toString', () => {
+    it('no append', () => {
       const boundary = 'test-boundary';
       const form = new MultiData(boundary);
       assert.equal(form.toString(), `--${boundary}--`);
     });
   });
 
-  describe('append', function () {
-    it('Error: append expects a name', function () {
+  describe('append', () => {
+    it('Error: append expects a name', () => {
       const boundary = 'test-boundary';
       const form = new MultiData(boundary);
       assert.throws(() => form.append(undefined, 'some data'));
     });
 
-    it('Error: append expects data', function () {
+    it('Error: append expects data', () => {
       const boundary = 'test-boundary';
       const form = new MultiData(boundary);
       assert.throws(() => form.append('section1', undefined));
     });
 
-    it('append', function () {
+    it('append', () => {
       const boundary = 'test-boundary';
       const form = new MultiData(boundary);
       form.append('section1', 'some data');
       assert.equal(form.toString(), [`--${boundary}`, 'Content-Disposition: form-data; name="section1"', '', 'some data', `--${boundary}--`].join('\r\n'));
     });
 
-    it('append binary', function () {
+    it('append binary', () => {
       const boundary = 'test-boundary';
       const form = new MultiData(boundary);
       form.append('section1', encodeUTF8('some data'));
       assert.equal(form.toString(), [`--${boundary}`, 'Content-Disposition: form-data; name="section1"', '', encodeUTF8('some data').toString(), `--${boundary}--`].join('\r\n'));
     });
 
-    it('append with headers', function () {
+    it('append with headers', () => {
       const boundary = 'test-boundary';
       const form = new MultiData(boundary);
       form.append('section1', 'some data', {
