@@ -1,8 +1,9 @@
 import assert from 'assert';
-import MultiData, { Options } from 'multi-data';
+// @ts-ignore
+import MultiData, { type Options } from 'multi-data';
 
-describe('exports .ts', function () {
-  it('append with headers', function () {
+describe('exports .ts', () => {
+  it('append with headers', () => {
     const boundary = 'test-boundary';
     const form = new MultiData(boundary);
     const options: Options = { headers: { 'some-header': 'header-value' } };
