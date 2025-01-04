@@ -1,34 +1,7 @@
 {
   "name": "multi-data",
+  "version": "0.2.10",
   "description": "Create multipart form data",
-  "version": "0.2.8",
-  "author": {
-    "email": "kmalakoff@gmail.com",
-    "name": "Kevin Malakoff",
-    "url": "https://github.com/kmalakoff"
-  },
-  "license": "MIT",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.mjs",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsds build",
-    "deploy": "tsds deploy",
-    "format": "tsds format",
-    "lint": "tsds lint",
-    "test": "tsds test:node && tsds test:browser",
-    "version2": "tsds version"
-  },
-  "homepage": "https://github.com/kmalakoff/multi-data#README.md",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/kmalakoff/multi-data.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kmalakoff/multi-data/issues"
-  },
   "keywords": [
     "batch",
     "data",
@@ -38,24 +11,60 @@
     "parts",
     "typescript"
   ],
-  "devDependencies": {
-    "ts-dev-stack": "^0.6.5"
+  "homepage": "https://github.com/kmalakoff/multi-data#README.md",
+  "bugs": {
+    "url": "https://github.com/kmalakoff/multi-data/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kmalakoff/multi-data.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Kevin Malakoff",
+    "email": "kmalakoff@gmail.com",
+    "url": "https://github.com/kmalakoff"
   },
   "type": "module",
-  "engines": {
-    "node": ">=0.8"
-  },
   "exports": {
     ".": {
       "import": "./dist/esm/index.mjs",
-      "require": "./dist/cjs/index.js",
+      "require": "./dist/cjs/index.cjs",
       "types": "./dist/types/index.d.ts"
     },
     "./*": "./*"
   },
-  "tsds": {
-    "source": "src/index.ts"
-  },
+  "main": "dist/cjs/index.cjs",
+  "unpkg": "dist/umd/multi-data.cjs",
+  "module": "dist/esm/index.mjs",
   "types": "dist/types/index.d.ts",
-  "unpkg": "dist/umd/multi-data.js"
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsds build",
+    "deploy": "tsds deploy",
+    "docs": "tsds docs",
+    "format": "biome check --write --unsafe src/ test/",
+    "test": "tsds test:node --no-timeouts && tsds test:browser",
+    "test:engines": "nvu engines tsds test:node --no-timeouts && tsds test:browser",
+    "version": "tsds version"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.10.5",
+    "tsds-web-test-runner": "^1.11.15"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
+  "tsds": {
+    "source": "src/index.ts",
+    "targets": [
+      "cjs",
+      "esm",
+      "umd"
+    ]
+  }
 }
