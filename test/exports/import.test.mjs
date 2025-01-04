@@ -1,8 +1,8 @@
 import assert from 'assert';
 import MultiData from 'multi-data';
 
-describe('exports .mjs', function () {
-  it('append with headers', function () {
+describe('exports .mjs', () => {
+  it('append with headers', () => {
     const boundary = 'test-boundary';
     const form = new MultiData(boundary);
     const options = { headers: { 'some-header': 'header-value' } };
