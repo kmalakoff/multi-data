@@ -1,1 +1,1 @@
-ignores: ["multi-data", "@types/*", "@biomejs/*", "tsds-web-test-runner"]
+ignores: ["@types/*", "multi-data", "@biomejs/*", "tsds-web-test-runner"]
