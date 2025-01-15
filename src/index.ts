@@ -6,6 +6,12 @@ export interface Options {
   headers?: HeadersObject;
 }
 
+export interface Splittable<T> {
+  slice(idx: number, len?: number): this;
+  [idx: number]: T;
+  readonly length: number;
+}
+
 /**
  * Class to build and concatenate multipart form data
  */
@@ -28,7 +34,7 @@ export default class MultiData {
    * @param data The part data.
    * @param options Pass headers in the options for custom part headers.
    */
-  append(name: string, data: string, options?: Options): MultiData {
+  append<T>(name: string, data: Splittable<T>, options?: Options): MultiData {
     if (name === undefined) throw new TypeError('name expected');
     if (data === undefined) throw new TypeError('data expected');
 
@@ -39,7 +45,7 @@ export default class MultiData {
       for (const key in headers) this.lines.push(`${key}: ${headers[key]}`);
     }
     this.lines.push('');
-    this.lines.push(data);
+    this.lines.push(data.toString());
     return this;
   }
 
