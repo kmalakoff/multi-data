@@ -1,6 +1,6 @@
 {
   "name": "multi-data",
-  "version": "0.2.22",
+  "version": "0.2.23",
   "description": "Create multipart form data",
   "keywords": [
     "batch",
