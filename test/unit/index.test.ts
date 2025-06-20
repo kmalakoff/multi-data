@@ -1,8 +1,6 @@
 import assert from 'assert';
 // @ts-ignore
 import MultiData from 'multi-data';
-
-// @ts-ignore
 import encodeUTF8 from '../lib/encodeUTF8.ts';
 
 describe('form-data', () => {
