@@ -1,6 +1,4 @@
-export interface HeadersObject {
-  [key: string]: string;
-}
+export type HeadersObject = Record<string, string>;
 
 export interface Options {
   headers?: HeadersObject;
