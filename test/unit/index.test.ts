@@ -1,5 +1,4 @@
 import assert from 'assert';
-// @ts-ignore
 import MultiData from 'multi-data';
 import encodeUTF8 from '../lib/encodeUTF8.ts';
 
