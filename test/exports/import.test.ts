@@ -1,5 +1,4 @@
 import assert from 'assert';
-// @ts-ignore
 import MultiData, { type Options } from 'multi-data';
 
 describe('exports .ts', () => {
