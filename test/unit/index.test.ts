@@ -5,7 +5,7 @@ import encodeUTF8 from '../lib/encodeUTF8.ts';
 describe('form-data', () => {
   describe('constructor', () => {
     it('Error: constructor expects a boundary', () => {
-      assert.throws(() => new MultiData(undefined));
+      assert.throws(() => new MultiData(undefined as unknown as string));
     });
 
     it('boundary', () => {
@@ -27,13 +27,13 @@ describe('form-data', () => {
     it('Error: append expects a name', () => {
       const boundary = 'test-boundary';
       const form = new MultiData(boundary);
-      assert.throws(() => form.append(undefined, 'some data'));
+      assert.throws(() => form.append(undefined as unknown as string, 'some data'));
     });
 
     it('Error: append expects data', () => {
       const boundary = 'test-boundary';
       const form = new MultiData(boundary);
-      assert.throws(() => form.append('section1', undefined));
+      assert.throws(() => form.append('section1', undefined as unknown as string));
     });
 
     it('append', () => {
