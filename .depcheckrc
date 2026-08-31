@@ -1,1 +1,1 @@
-ignores: ["node-version-use", "ts-dev-stack", "multi-data", "tsds-web-test-runner"]
+ignores: ["multi-data", "node-version-use", "ts-dev-stack", "tsds-web-test-runner"]
