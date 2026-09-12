@@ -2,6 +2,10 @@
 
 Create multipart form data
 
+```bash
+npm install multi-data
+```
+
 ### Example 1
 
 ```typescript
@@ -9,10 +13,10 @@ import MultiData from "multi-data";
 
 const formData = new MultiData("boundary-1234-abcd");
 formData.append("data1", JSON.stringify({ data1: true }), {
-  headers: { "Content-ID": 1 },
+  headers: { "Content-ID": "1" },
 });
 formData.append("data2", JSON.stringify({ data2: true }), {
-  headers: { "Content-ID": 2 },
+  headers: { "Content-ID": "2" },
 });
 
 const res = await fetch("https://somewhere.com/batch", {
@@ -20,7 +24,7 @@ const res = await fetch("https://somewhere.com/batch", {
   headers: {
     "Content-Type": `multipart/mixed; boundary=${formData.boundary}`,
   },
-  data: formData.toString(),
+  body: formData.toString(),
 });
 ```
 
